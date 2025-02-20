@@ -1,15 +1,47 @@
-This is the Readme for mitm
+# Install
+
+1. Clone this repository
+     ```bash
+    git clone "this_repo"
+    cd Mitm/
+    ```
+2. Create docker containers
+    ```bash
+    docker-compose up --build
+    ```
+3. In a new terminal go to attacker container
+    ```bash
+    docker exec -it attacker /bin/bash
+    ```
+4. Go to Mitm script and create venv and install requiremnts
+    ```bash
+    cd /root/
+    python3 -m venv venv
+    source venv/bin/activate
+    pip3 install -r requirements.txt
+    ```
+5. Run the script
+    ```bash
+    python3 mitm.py <interface> <victim ip> <gateway ip>
+    # Inside the container it should be
+    python3 mitm.py eth0 10.0.0.4 10.0.0.2
+
+
+
+
 # Development
 Firstly I need to create the networks for the containers. An external network connecting \
 to the outside internet and internal for only the containers to access 
 
-## Creating Network
+## Creating Enviorment
+Before I begin development on the script I need an enviorment to test it. 
+### Creating Network
 This command creates the internal network only accessabible by the containers\
 ```docker network create --driver=bridge --subnet=10.0.0.0/24 internal```\
 This command creates the external network where we will forward packets destined outside the internal network\
 ```docker network create --driver=bridge --subnet=10.0.1.0/24 external```
 
-## Creating Containers
+### Creating Containers
 The first container I will be making is the router. It will use ubuntu \
 and will be connected to both external and internal networks. \
 ```docker run -dit --name router --net=internal_net --ip=10.0.0.2 --privileged ubuntu``` \
@@ -21,7 +53,7 @@ Next I will create the target container \
 Next is the attacker \
 ```docker run -dit --name attacker --net=internal --ip=10.0.0.6 ubuntu``` 
 
-## Configuring Router
+### Configuring Router
 
 I can enter my container using
 ```docker exec -it router bash```
@@ -35,7 +67,7 @@ Because we are on a bare minimum ubunutu container we must install iptables
 Now we can enable NAT with the output going to the external network interface.
 ```iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE```
 
-## Testing Enviorment
+### Testing Enviorment
 To test the enviorment I will first check that all containers can ping each other on the internal network
 I need to install ping on each container I will do this by 
 1. ```docker exec -it 'container name' apt update```
