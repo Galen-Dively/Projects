@@ -3,7 +3,13 @@ import scapy
 from termcolor import colored
 import os
 import src.mitm as mitm
+import src.dos as dos
 import threading
+
+
+## DDOS
+# Broadcast storm
+# Packet flood (TCP, UDP)
 
 
 class Enterm:
@@ -26,7 +32,8 @@ _______________         __
 
         self.mainmenu = """
 Please Enter Your Option
-1. ARP Poison       2. Quit
+1. MiTM       3. Quit
+2. DoS
                         """
      
     # function sinply for ease of use when coding
@@ -52,6 +59,9 @@ Please Enter Your Option
                     attack = mitm.Mitm()
                     attack.loop()
                 case 2:
+                    attack = dos.DoS()
+                    attack.arp_poison()
+                case 3:
                     self.quit()
 
     def cleanup(self):
