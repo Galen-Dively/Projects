@@ -1,0 +1,8 @@
+services:
+  llama:
+    image: ollama/ollama:latest
+    hostname: llama
+    ports:
+      - "11435:11434"
+
+    

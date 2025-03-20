@@ -1,10 +1,13 @@
 import time
+import asyncio
 import scapy
 from termcolor import colored
 import os
 import src.mitm as mitm
 import src.dos as dos
-import threading
+import gui
+import argparse
+# import tui for future tui class to seperate gui in enterm
 
 
 ## DDOS
@@ -14,7 +17,11 @@ import threading
 
 class Enterm:
     def __init__(self):
-
+        parser = argparse.ArgumentParser(description="Enter")
+        parser.add_argument("--gui", action="store_true", help="Run in gui")
+        # Check if gui or terminal default: term
+        if parser.gui:
+            pass
         # check for cls or clear
         if os.name == "nt":
             self.clear_term = "cls"

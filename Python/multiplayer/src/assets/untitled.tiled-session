@@ -1,0 +1,48 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "test.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "/Users/galendively/Projects/Python/multiplayer/assets/sunny1.tsx": {
+            "scaleInDock": 1
+        },
+        "sunny1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1.5801,
+            "scaleInEditor": 2
+        },
+        "test.tmx": {
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 229.75,
+                "y": 467
+            }
+        }
+    },
+    "last.imagePath": "/Users/galendively/Projects/Python/multiplayer/assets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Tileset",
+    "map.height": 50,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "openFiles": [
+        "test.tmx",
+        "sunny1.tsx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "sunny1.tsx",
+        "test.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

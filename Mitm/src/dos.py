@@ -24,7 +24,7 @@ class DoS:
         with open(forward_file, "w+") as f:
             if int(f.readline()) == 1:
                 print(colored("[Warning] IP forwarding is enabled. Trying to disable it...", "yellow"))
-        
+            
         # check if single attack or entire network
         targeted = False
         i = input("Would you like to target entire network[y/n]")
